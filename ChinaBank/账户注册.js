@@ -11,7 +11,7 @@ const yj2 = document.querySelector('.q-form .yanjing2');//闭眼
 yj1.addEventListener('click', () => {
   yj1.style.display = 'none';
   yj2.style.display = 'block';
-  password1.type = 'text';
+  password1.type = 'textaa';
 })
 //11
 yj2.addEventListener('click', () => {
