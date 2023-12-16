@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>登录页面</title>
+    <link rel="stylesheet" href="登录页面.css">
+</head>
+
+<body>
+    <div class="goods">
+        <div class="box">
+            <img src="https://s11.ax1x.com/2023/12/16/pi4oVsO.png" alt="显示错误" class="logo">
+        </div>
+        <div class="login-app">
+            <input type="radio" name="opt" id="msg" checked="checked">
+            <label for="msg" class="m-btn">短信登录</label>
+            <input type="radio" name="opt" id="uname">
+            <label for="uname" class="u-btn">账号登录</label>
+            <input type="radio" name="opt" id="code">
+            <label for="code" class="q-btn">账户注册</label>
+            <div id="form-bar">
+                <form class="m-form">
+                    <input class='ttt' placeholder="请输入手机号码">
+                    <p class="hidden-text" style="color: rgb(240,248,255);"></p>
+                    <br>
+                    <input class='tttt' placeholder="请输入验证码">
+                    <button type="button" class="get-btn">获取验证码</button>
+                    <input type="checkbox" id="sure">
+                    <label for="sure" class="besure">
+                        <p>
+                            我已阅读并同意
+                            <a class="s" href="">服务协议</a>
+                            和
+                            <a class="ss" href="">隐私权条款</a>
+                        </p>
+                    </label>
+                    <button type="button" class="login-btn">登录</button>
+                </form>
+
+                <form class="u-form">
+                    <input class='txt001' placeholder="请输入手机号码">
+                    <p class="hidden-text" style="color: rgb(240,248,255);"></p>
+                    <br>
+                    <input class="txt002" type="password" placeholder="登录密码">
+                    <img src="https://s11.ax1x.com/2023/12/16/pi4rgXt.png" class="yanjing1">
+                    <img src="https://s11.ax1x.com/2023/12/16/pi4rc6I.png" class="yanjing2">
+                    <button type="button" class="login-btn">登录</button>
+                </form>
+
+                <form class="q-form">
+                    <input class='ttt' placeholder="请输入手机号码">
+                    <p class="hidden-text1" style="color: rgb(240,248,255);"></p>
+                    <br>
+                    <input class='pw1' type="password" placeholder="请输入您的密码">
+                    <img src="https://s11.ax1x.com/2023/12/16/pi4rgXt.png" class="yanjing1">
+                    <img src="https://s11.ax1x.com/2023/12/16/pi4rc6I.png" class="yanjing2">
+                    <p class="hidden-text2" style="color: rgb(38, 29, 203);">请输入密码</p>
+                    <br>
+                    <input class='pw2' type="password" placeholder="请确认您的密码">
+                    <p class="hidden-text3" style="color: rgb(240,248,255);"></p>
+                    <br>
+                    <button type="button" class="login-btn">注册</button>
+                </form>
+            </div>
+            <div class="box2">
+                <p class="cnn">简体中文 &nbsp |</p>
+                <p class="enn"> &nbsp English</p>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./中英文切换.js"></script>
+    <script src="./短信登录.js"></script>
+    <script src="./账户注册.js"></script>
+    <script src="./账号登录.js"></script>
+</body>
+
+</html>
