@@ -241,7 +241,7 @@ label.besure::after {
     right: 97px;
     position: absolute;
     display: block;
-    /* 让图片成为块元素 */
+    /* 让图片成为块元素  */
     margin: -52px
 }
 
