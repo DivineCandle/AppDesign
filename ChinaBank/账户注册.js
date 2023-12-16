@@ -13,13 +13,13 @@ yj1.addEventListener('click', () => {
   yj2.style.display = 'block';
   password1.type = 'textaa';
 })
-//11
+
 yj2.addEventListener('click', () => {
   yj2.style.display = 'none';
   yj1.style.display = 'block';
   password1.type = 'password';
 })
-//22
+
 let aliveDetector1 = setInterval(function () {
   if (!(/^1[0-9]{10}$/.test(Number(sjhm1.value))) && sjhm1.value !== '' && flagOfSpecial === true) {
     ts1.innerHTML = '请输入正确的手机号！';
