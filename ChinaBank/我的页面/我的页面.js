@@ -7,6 +7,9 @@ const creator = '老张';//实验
 
 const exitButton = document.querySelector('.box1-1 img');//退出按钮
 const settingButton = document.querySelector('.box1-3 img');//设置按钮
+const searchButton = document.querySelector('.icon img');//放大镜按钮
+const textInput = document.querySelector('.textInput input');//搜索框
+const clearButton = document.querySelector('.textInput .clear');//清空按钮
 
 exitButton.addEventListener('click', () => {
   document.body.style.marginRight = "-15%";
@@ -20,8 +23,24 @@ settingButton.addEventListener('click', () => {
   document.body.style.marginRight = "-15%";
   document.body.style.opacity = "0";
   setTimeout(function () {
-    location.href = './设置界面/设置.html';
+    location.href = './设置页面/设置页面.html';
   }, 100);
+})
+
+searchButton.addEventListener('click', () => {
+  if (textInput.value !== '') {
+    location.href = `../${textInput.value}页面/${textInput.value}页面.html`;
+  }
+})
+
+textInput.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter' && textInput.value !== '') {
+    location.href = `../${textInput.value}页面/${textInput.value}页面.html`;
+  }
+})
+
+clearButton.addEventListener('click', () => {
+  textInput.value = '';
 })
 
 /***********************************************/

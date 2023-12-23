@@ -158,13 +158,13 @@ login.addEventListener('click', (e) => {
         localStorage.setItem('token', result.data.data.token)
         alert(result.data.message)
 
-        location.href = '../主页/主页.html';
+        location.href = '../首页/首页.html';
 
       } else {
         alert(result.data.message)
         console.log(result)
       }
-      
+
     })//后端
 
 
@@ -176,15 +176,15 @@ login.addEventListener('click', (e) => {
 
 
 
-    
+
 
 
   }
   else if (yzm.value == varify && flag === true && flagOfSpecial === false) {
-    
-    
-    
-    
+
+
+
+
     axios({
       url: 'http://hmajax.itheima.net/api/login',
       method: 'POST',
@@ -198,11 +198,11 @@ login.addEventListener('click', (e) => {
         console.log(result)
         console.log(result.data.message)
         alert(result.data.message)
-        location.href = './主页/主页.html';
+        location.href = '../首页/首页.html';
       } else {
         alert(result.data.message)
       }
-      
+
     })//后端
 
 

@@ -20,6 +20,6 @@ nav.querySelectorAll('li a').forEach((a, i) => {
 const shouye = document.querySelector(".nav li a");
 shouye.addEventListener('click', () => {
     setTimeout(() => {
-        location.href = "../主页/主页.html";
+        location.href = "../首页/首页.html";
     }, 500)
 })

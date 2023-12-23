@@ -61,7 +61,7 @@ login1.addEventListener('click', (e) => {
       console.log(result)
       console.log(result.data.message)
       alert(result.data.message)
-      location.href = '../主页/主页.html';
+      location.href = '../首页/首页.html';
     } else {
       console.log(error)
       console.log(error.response.data.message)

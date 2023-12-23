@@ -32,6 +32,6 @@ exitButton.addEventListener('click', () => {
   document.body.style.marginRight = "-15%";
   document.body.style.opacity = "0";
   setTimeout(function () {
-    location.href = '../主页.html';
+    location.href = '../首页.html';
   }, 100);
 })

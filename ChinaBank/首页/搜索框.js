@@ -1,5 +1,4 @@
-//后续功能再完善数组
-var functionArray = ["转账", "收付款", "账户管理", "查看流水", "安全中心"];
+var functionArray = ["转账", "收付款", "账户管理", "查看流水", "手机号转账", "银行账号转账"];
 
 function showDropdown() {
   var dropdown = document.getElementById("dropdown");

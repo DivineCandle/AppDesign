@@ -71,14 +71,17 @@ body {
     flex: 3;
     height: 50px;
     display: flex;
-    flex-wrap: wrap;/*元素换行*/
-    align-items: center;/* 垂直居中 */
+    flex-wrap: wrap;
+    /*元素换行*/
+    align-items: center;
+    /* 垂直居中 */
     font-size: 24px;
     background-color: #fff;
     box-shadow:
         0 0 10px rgba(0, 0, 0, 0.4);
     /*在元素周围添加一个模糊度为10像素的阴影，阴影的颜色为半透明的黑色（透明度为0.4）*/
-    border-radius: 60px;/*圆角*/
+    border-radius: 60px;
+    /*圆角*/
     position: relative;
 }
 
@@ -124,6 +127,19 @@ body {
     padding: 10px;
     cursor: pointer;
     z-index: 10;
+    font-size: 18px;
+    border-bottom: solid #0000001f 1.5px;
+}
+
+#dropdown :first-child {
+    margin-top: 1px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#dropdown :last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 #dropdown div:hover {
@@ -516,7 +532,8 @@ body {
 
 /* 规定全局颜色  可以使用var调用 */
 :root {
-    --bg-nav: #e5edf5;/*背景颜色*/
+    --bg-nav: #e5edf5;
+    /*背景颜色*/
     --color-nav: #644c89;
     --color-nav-active: #000000;
 }

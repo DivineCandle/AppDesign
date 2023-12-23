@@ -1,5 +1,4 @@
-//后续功能再完善数组
-var functionArray = ["转账", "收付款", "账户管理", "查看流水", "安全中心"];
+var functionArray = ["转账", "收付款", "账户管理", "查看流水", "手机号转账", "银行账号转账"];
 
 function showDropdown() {
   var dropdown = document.getElementById("dropdown");
@@ -22,6 +21,7 @@ function search() {
   for (var i = 0; i < functionArray.length; i++) {
     if (functionArray[i].toUpperCase().includes(inputOfSearch)) {
       var divOfSearch = document.createElement("div");
+      // divOfSearch.style.fontSize = '90px';
       divOfSearch.innerHTML = functionArray[i];
       divOfSearch.addEventListener("click", function () {
         document.getElementById("searchBox").value = this.innerHTML;
