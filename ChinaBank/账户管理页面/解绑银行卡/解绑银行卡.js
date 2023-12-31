@@ -36,6 +36,15 @@ closeMiMaTanChuang.addEventListener('click', () => {
   document.getElementById("overlay").classList.remove("show");
 })
 
+let aliveDetector = setInterval(()=>{
+  if (passwordInput.value.length === 6){
+    confirmPasswordButton.style.opacity = '1';
+  } else {
+    confirmPasswordButton.style.opacity = '0.5';
+  }
+  // console.log(passwordInput.value.length);
+},50)
+
 confirmPasswordButton.addEventListener('click', () => {
   pipei();
 })
@@ -47,7 +56,7 @@ function pipei() {
 function right() {
   let token = localStorage.getItem('token');
   axios({
-    url: 'http://47.113.198.244/user/verifyCard',
+    url: 'http://47.113.198.244:8080/user/verifyCard',
     headers: {
       token
     },
@@ -67,7 +76,7 @@ function right() {
 function guasi() {
   let token = localStorage.getItem('token');
   axios({
-    url: 'http://47.113.198.244/user/verifyLoss',
+    url: 'http://47.113.198.244:8080/user/verifyLoss',
     headers: {
       token
     },
@@ -87,7 +96,7 @@ function guasi() {
 function yongyou() {
   let token = localStorage.getItem('token');
   axios({
-    url: 'http://47.113.198.244/user/verifyAccount',
+    url: 'http://47.113.198.244:8080/user/verifyAccount',
     headers: {
       token
     },
@@ -108,7 +117,7 @@ function mima() {
   let token = localStorage.getItem('token');
   var selectedValue = selectElement.value;
   axios({
-    url: 'http://47.113.198.244/user/getPaymentPassword',
+    url: 'http://47.113.198.244:8080/user/getPaymentPassword',
     headers: {
       token
     },
@@ -132,7 +141,7 @@ function tianjia() {
   var selectedValue = selectElement.value;
   axios({
 
-    url: 'http://47.113.198.244/user/deleteCard',
+    url: 'http://47.113.198.244:8080/user/deleteCard',
     method: "PUT",
     headers: {
       token
@@ -143,6 +152,7 @@ function tianjia() {
   }).then(result => {
     if (result.data.code == 200) {
       console.log(result);
+      getaccount();
       hint.style.visibility = 'hidden';
       MiMaTanChuang.classList.remove("show");
       passwordInput.value = '';
@@ -160,7 +170,7 @@ function tianjia() {
 function getaccount() {
   let token = localStorage.getItem('token');
   axios({
-    url: 'http://47.113.198.244/user/getRelatedCard',
+    url: 'http://47.113.198.244:8080/user/getRelatedCard',
     headers: {
       token
     }

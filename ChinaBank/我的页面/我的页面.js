@@ -23,7 +23,7 @@ exitButton.addEventListener('click', () => {
   document.body.style.opacity = "0";
   setTimeout(function () {
     localStorage.clear();
-    location.href = '../三模登录页面/三模登录页面.html'
+    location.href = '../index.html';
   }, 100);
 })
 
