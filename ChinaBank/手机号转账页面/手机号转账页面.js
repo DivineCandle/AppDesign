@@ -164,7 +164,18 @@ function mima(){
 }
 function transfer(){
     var selectedValue = selectElement.value;
-    var tradeDate = new Date("2023-12-20T15:44:30");
+    var currentDate = new Date();
+
+// 获取年、月、日、时、分、秒
+var year = currentDate.getFullYear();
+var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 月份从0开始，需要加1
+var day = currentDate.getDate().toString().padStart(2, '0');
+var hours = currentDate.getHours().toString().padStart(2, '0');
+var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+var seconds = currentDate.getSeconds().toString().padStart(2, '0');
+
+// 构建表示当前时间的字符串，格式为 YYYY-MM-DDTHH:mm:ss
+var formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
     var phoneNumber=ShouKuanShouJiHao.value;
     var money=ZhuanZhangJinE.value;
     var token = localStorage.getItem('token'); 
@@ -176,7 +187,7 @@ function transfer(){
           },
         data:{
           cardID:selectedValue,
-          tradeDate,
+          tradeDate:formattedDate,
           phoneNumber,
           tradeMoney:money
         }

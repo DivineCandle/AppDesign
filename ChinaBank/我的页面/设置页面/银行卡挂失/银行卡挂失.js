@@ -42,7 +42,6 @@ confirmButton.addEventListener('click', () => {
       if (result.data.code == 200) {
         //挂失成功提醒
 
-
         showDiv();
         getaccount();
 

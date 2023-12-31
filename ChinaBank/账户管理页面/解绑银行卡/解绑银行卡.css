@@ -136,7 +136,7 @@ select {
     background: linear-gradient(129.12deg, #446dff, rgba(99, 125, 255, .75));
     color: #fff;
     font-size: 20px;
-    opacity: 0.5;
+    opacity: 1;
     /* 初始时按钮是半透明的 */
     transition: opacity 0.3s;
     /* 设置透明度的过渡效果 */
