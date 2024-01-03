@@ -55,6 +55,6 @@ TuiChuDengLuButton.addEventListener('click', () => {
   document.body.style.opacity = "0";
   setTimeout(function () {
     localStorage.clear();
-    location.href = '../../../index.html';
+    location.href = '../../index.html';
   }, 100);
 })
