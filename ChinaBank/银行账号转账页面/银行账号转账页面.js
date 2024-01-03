@@ -1,7 +1,7 @@
 const tranferbtn = document.querySelector('.box4 .tranfer');//转账按钮
 var selectElement = document.getElementById("account");
 const urlParams = new URLSearchParams(window.location.search);
-const cardNumber=urlParams.get('cardID');
+const cardNumber = urlParams.get('cardID');
 console.log(cardNumber);
 /***********************************************/
 /*  12月24日0:52增加 */
@@ -82,7 +82,7 @@ closeMiMaTanChuang.addEventListener('click', () => {
 })
 
 confirmPasswordButton.addEventListener('click', () => {
-    guasiInfo();
+    pipei();
 })
 
 /***********************************************/
@@ -92,9 +92,9 @@ function getaccount() {
     let token = localStorage.getItem('token');
     axios({
         url: 'http://47.113.198.244:8080/user/getRelatedCard',
-      headers: {
-        token
-      }
+        headers: {
+            token
+        }
     }).then(result => {
         console.log(result)
         var optionsData = result.data.data;
@@ -106,111 +106,111 @@ function getaccount() {
             optionElement.text = lastFourDigits;
             selectElement.appendChild(optionElement);
         }
-        if(cardNumber){
+        if (cardNumber) {
             selectElement.value = cardNumber;
         }
     })
 }
 getaccount();
 
-function guasiInfo(){
-    var cardIDII=ShouKuanShouJiHao.value;
+function guasiInfo() {
+    var cardIDII = ShouKuanShouJiHao.value;
     var token = localStorage.getItem('token');
     axios({
         url: 'http://47.113.198.244:8080/user/verifyLoss',
         headers: {
-          token
+            token
         },
-        params:{
-            cardID:cardIDII
+        params: {
+            cardID: cardIDII
         }
-      }).then(result => {
-        if (result.data.code==200) {
+    }).then(result => {
+        if (result.data.code == 200) {
             console.log(result.data.msg);
-            pipei();
+            mima();
         } else {
             alert(result.data.msg);
         }
-      })    
+    })
 }
-function pipei(){
-    var customerName=ShouKuanRen.value;
-    var cardIDII=ShouKuanShouJiHao.value; 
-    var token = localStorage.getItem('token');       
+function pipei() {
+    var customerName = ShouKuanRen.value;
+    var cardIDII = ShouKuanShouJiHao.value;
+    var token = localStorage.getItem('token');
     axios({
         url: 'http://47.113.198.244:8080/user/verifyConnection1',
         headers: {
             token
-          },
+        },
         params: {
-          customerName,
-          cardID:cardIDII       
+            customerName,
+            cardID: cardIDII
         }
-      }).then(result => {
-         if (result.data.code==200) {
+    }).then(result => {
+        if (result.data.code == 200) {
             console.log(result.data.msg);
-            mima(); 
-         } else {
+            guasiInfo();
+        } else {
             alert(result.data.msg);
-         }
-    }) 
+        }
+    })
 }
-function mima(){
-    var password=passwordInput.value;
+function mima() {
+    var password = passwordInput.value;
     var selectedValue = selectElement.value;
     var token = localStorage.getItem('token');
     axios({
         url: 'http://47.113.198.244:8080/user/getPaymentPassword',
         headers: {
             token
-          },
+        },
         params: {
-          cardID:selectedValue,
-          password
+            cardID: selectedValue,
+            password
         }
-      }).then(result => {
-         if (result.data.code==200) {
+    }).then(result => {
+        if (result.data.code == 200) {
             console.log(result.data.msg);
             hint.style.visibility = 'hidden';
             transfer();
-         } else {
+        } else {
             console.log(result);
             console.log(result.data.msg);
             hint.style.visibility = 'visible';
-         }
-    })    
+        }
+    })
 }
-function transfer(){
+function transfer() {
     var selectedValue = selectElement.value;
     var currentDate = new Date();
 
-// 获取年、月、日、时、分、秒
-var year = currentDate.getFullYear();
-var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 月份从0开始，需要加1
-var day = currentDate.getDate().toString().padStart(2, '0');
-var hours = currentDate.getHours().toString().padStart(2, '0');
-var minutes = currentDate.getMinutes().toString().padStart(2, '0');
-var seconds = currentDate.getSeconds().toString().padStart(2, '0');
+    // 获取年、月、日、时、分、秒
+    var year = currentDate.getFullYear();
+    var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 月份从0开始，需要加1
+    var day = currentDate.getDate().toString().padStart(2, '0');
+    var hours = currentDate.getHours().toString().padStart(2, '0');
+    var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+    var seconds = currentDate.getSeconds().toString().padStart(2, '0');
 
-// 构建表示当前时间的字符串，格式为 YYYY-MM-DDTHH:mm:ss
-var formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
-    var cardIDII=ShouKuanShouJiHao.value;
-    var money=ZhuanZhangJinE.value;
-    var token = localStorage.getItem('token'); 
+    // 构建表示当前时间的字符串，格式为 YYYY-MM-DDTHH:mm:ss
+    var formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+    var cardIDII = ShouKuanShouJiHao.value;
+    var money = ZhuanZhangJinE.value;
+    var token = localStorage.getItem('token');
     axios({
         url: 'http://47.113.198.244:8080/user/transfer',
-        method:'POST',
+        method: 'POST',
         headers: {
             token
-          },
-        data:{
-          tradeDate:formattedDate,
-          cardID:selectedValue,
-          cardIDII,
-          tradeMoney:money
+        },
+        data: {
+            tradeDate: formattedDate,
+            cardID: selectedValue,
+            cardIDII,
+            tradeMoney: money
         }
-      }).then(result => {
-         if (result.data.code==200) {
+    }).then(result => {
+        if (result.data.code == 200) {
             console.log(result.data.msg);
             MiMaTanChuang.style.visibility = 'hidden';
             document.getElementById("success").classList.add("show");
@@ -218,11 +218,11 @@ var formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
                 document.getElementById("success").classList.remove("show");
                 document.getElementById("overlay").classList.remove("show");
                 passwordInput.value = '';
-            }, 2000)            
-         } else {
+            }, 2000)
+        } else {
             alert(result.data.msg)
-         }
-    })   
+        }
+    })
 }
 
 let aliveDetector = setInterval(() => {

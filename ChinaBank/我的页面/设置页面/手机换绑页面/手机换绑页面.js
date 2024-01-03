@@ -26,15 +26,15 @@ getVarifyButton.addEventListener('click', () => {
   console.log(varifyToBack);
   axios({
     url: 'http://47.113.198.244:8080/pre/send',
-    method:'POST',
-    params:{
-      phoneNumber:phoneNumber.value,
-      code:varifyToBack
+    method: 'POST',
+    params: {
+      phoneNumber: phoneNumber.value,
+      code: varifyToBack
     }
   }).then(result => {
     console.log(result);
-    if (result.data.data=="OK") {
-      
+    if (result.data.data == "OK") {
+
     } else {
       alert(result.data.data);
     }
@@ -44,32 +44,33 @@ getVarifyButton.addEventListener('click', () => {
 
 confirmButton.addEventListener('click', () => {
   if (Number(varifyNumber.value) === varifyToBack) {//直接前端做验证
+    let token = localStorage.getItem('token');
     axios({
       url: 'http://47.113.198.244:8080/user/modifyPhoneNumber',
-      method:'PUT',
+      method: 'PUT',
       headers: {
-          token
-        },
+        token
+      },
       params: {
-        newPhoneNumber:phoneNumber.value,
+        newPhoneNumber: phoneNumber.value,
       }
     }).then(result => {
-       if (result.data.code==200) {
-          console.log(result.data.msg);
+      if (result.data.code == 200) {
+        console.log(result.data.msg);
+        document.getElementById("success").classList.add("show");
+        document.getElementById("overlay").classList.add("show");
+        setTimeout(() => {
+          document.getElementById("success").classList.remove("show");
+          document.getElementById("overlay").classList.remove("show");
+        }, 1500)
+      } else {
+        console.log(result);
+        alert(result.data.msg);
+      }
+    })
 
-       } else {
-          console.log(result);
-          alert(result.data.msg);
-       }
-  }) 
 
 
-    document.getElementById("success").classList.add("show");
-    document.getElementById("overlay").classList.add("show");
-    setTimeout(() => {
-      document.getElementById("success").classList.remove("show");
-      document.getElementById("overlay").classList.remove("show");
-    }, 1500)
   }
 
 })

@@ -23,34 +23,34 @@ function showDiv() {
   }, 1500)
 }
 
+//confirmButton.addEventListener('click', () => {
 confirmButton.addEventListener('click', () => {
-  confirmButton.addEventListener('click', () => {
-    var selectedValue = selectElement.value;
-    let token = localStorage.getItem('token');
+  var selectedValue = selectElement.value;
+  let token = localStorage.getItem('token');
 
-    axios({
-      url: 'http://47.113.198.244:8080/user/reportLoss',
-      method: 'PUT',
-      headers: {
-        token
-      },
-      params: {
-        cardID: selectedValue
-      }
-    }).then(result => {
-      console.log(result);
-      if (result.data.code == 200) {
-        //挂失成功提醒
+  axios({
+    url: 'http://47.113.198.244:8080/user/reportLoss',
+    method: 'PUT',
+    headers: {
+      token
+    },
+    params: {
+      cardID: selectedValue
+    }
+  }).then(result => {
+    console.log(result);
+    if (result.data.code == 200) {
+      //挂失成功提醒
 
-        showDiv();
-        getaccount();
+      showDiv();
+      getaccount();
 
-      } else {
-        alert(result.data.msg);
-      }
-    })
+    } else {
+      alert(result.data.msg);
+    }
   })
 })
+//})
 
 function getaccount() {
   let token = localStorage.getItem('token');

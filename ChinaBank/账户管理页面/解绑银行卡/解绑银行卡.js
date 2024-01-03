@@ -36,14 +36,14 @@ closeMiMaTanChuang.addEventListener('click', () => {
   document.getElementById("overlay").classList.remove("show");
 })
 
-let aliveDetector = setInterval(()=>{
-  if (passwordInput.value.length === 6){
+let aliveDetector = setInterval(() => {
+  if (passwordInput.value.length === 6) {
     confirmPasswordButton.style.opacity = '1';
   } else {
     confirmPasswordButton.style.opacity = '0.5';
   }
   // console.log(passwordInput.value.length);
-},50)
+}, 50)
 
 confirmPasswordButton.addEventListener('click', () => {
   pipei();
@@ -156,7 +156,12 @@ function tianjia() {
       hint.style.visibility = 'hidden';
       MiMaTanChuang.classList.remove("show");
       passwordInput.value = '';
-      document.getElementById("overlay").classList.remove("show");
+
+      document.getElementById("success").classList.add("show");
+      setTimeout(() => {
+        document.getElementById("success").classList.remove("show");
+        document.getElementById("overlay").classList.remove("show");
+      }, 1500)
     } else {
       alert(result.data.msg);
       hint.style.visibility = 'hidden';

@@ -53,118 +53,124 @@ confirmPasswordButton.addEventListener('click', () => {
   pipei();
 })
 
-function pipei(){
+function pipei() {
   right();
 }
 
-function right(){
+function right() {
   let token = localStorage.getItem('token');
   axios({
-      url: 'http://47.113.198.244:8080/user/verifyCard',
-      headers: {
-        token
-      },
-      params: {
-        cardID:cardInput.value
-      }
-    }).then(result => {
-       if (result.data.code==200) {
-          console.log(result);
-          guasi();
-       } else {
-          alert(result.data.msg);
-       }
-  })  
+    url: 'http://47.113.198.244:8080/user/verifyCard',
+    headers: {
+      token
+    },
+    params: {
+      cardID: cardInput.value
+    }
+  }).then(result => {
+    if (result.data.code == 200) {
+      console.log(result);
+      guasi();
+    } else {
+      alert(result.data.msg);
+    }
+  })
 }
 
-function guasi(){
+function guasi() {
   let token = localStorage.getItem('token');
   axios({
-      url: 'http://47.113.198.244:8080/user/verifyLoss',
-      headers: {
-        token
-      },
-      params: {
-        cardID:cardInput.value
-      }
-    }).then(result => {
-       if (result.data.code==200) {
-          console.log(result);
-          yongyou();
-       } else {
-          alert(result.data.msg);
-       }
-  })  
+    url: 'http://47.113.198.244:8080/user/verifyLoss',
+    headers: {
+      token
+    },
+    params: {
+      cardID: cardInput.value
+    }
+  }).then(result => {
+    if (result.data.code == 200) {
+      console.log(result);
+      yongyou();
+    } else {
+      alert(result.data.msg);
+    }
+  })
 }
 
-function yongyou(){
+function yongyou() {
   let token = localStorage.getItem('token');
   axios({
-      url: 'http://47.113.198.244:8080/user/verifyAccount',
-      headers: {
-        token
-      },
-      params: {
-        cardID:cardInput.value
-      }
-    }).then(result => {
-       if (result.data.code==200) {
-          console.log(result);
-          mima();
-       } else {
-          alert(result.data.msg);
-       }
-  })  
+    url: 'http://47.113.198.244:8080/user/verifyAccount',
+    headers: {
+      token
+    },
+    params: {
+      cardID: cardInput.value
+    }
+  }).then(result => {
+    if (result.data.code == 200) {
+      console.log(result);
+      mima();
+    } else {
+      alert(result.data.msg);
+    }
+  })
 }
 
-function mima(){
+function mima() {
   let token = localStorage.getItem('token');
   axios({
-      url: 'http://47.113.198.244:8080/user/getPaymentPassword',
-      headers: {
-        token
-      },
-      params: {
-        cardID:cardInput.value,
-        password:passwordInput.value
-      }
-    }).then(result => {
-       if (result.data.code==200) {
-          console.log(result);
-          tianjia();
-          hint.style.visibility = 'hidden';
-       } else {
-          hint.style.visibility = 'visible';
-       }
-  })  
+    url: 'http://47.113.198.244:8080/user/getPaymentPassword',
+    headers: {
+      token
+    },
+    params: {
+      cardID: cardInput.value,
+      password: passwordInput.value
+    }
+  }).then(result => {
+    if (result.data.code == 200) {
+      console.log(result);
+      tianjia();
+      hint.style.visibility = 'hidden';
+    } else {
+      hint.style.visibility = 'visible';
+    }
+  })
 }
 
-function tianjia(){
+function tianjia() {
   let token = localStorage.getItem('token');
   axios({
-      url: 'http://47.113.198.244:8080/user/addCard',
-      method:"PUT",
-      headers: {
-        token
-      },
-      params: {
-        cardID:cardInput.value
-      }
-    }).then(result => {
-       if (result.data.code==200) {
-          console.log(result);
-          hint.style.visibility = 'hidden';
-          MiMaTanChuang.classList.remove("show");
-          passwordInput.value = '';
-          document.getElementById("overlay").classList.remove("show");
-       } else {
-          alert(result.data.msg);
-          hint.style.visibility = 'hidden';
-          MiMaTanChuang.classList.remove("show");
-          passwordInput.value = '';
-          document.getElementById("overlay").classList.remove("show");
-       }
-  })  
+    url: 'http://47.113.198.244:8080/user/addCard',
+    method: "PUT",
+    headers: {
+      token
+    },
+    params: {
+      cardID: cardInput.value
+    }
+  }).then(result => {
+    if (result.data.code == 200) {
+      console.log(result);
+      hint.style.visibility = 'hidden';
+      MiMaTanChuang.classList.remove("show");
+      passwordInput.value = '';
+      // alert();
+      document.getElementById("success").classList.add("show");
+      setTimeout(() => {
+        document.getElementById("success").classList.remove("show");
+        document.getElementById("overlay").classList.remove("show");
+      }, 1500)
+
+    } else {
+      alert(result.data.msg);
+      hint.style.visibility = 'hidden';
+      MiMaTanChuang.classList.remove("show");
+      passwordInput.value = '';
+      document.getElementById("overlay").classList.remove("show");
+    }
+  })
 }
 
 
