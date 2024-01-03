@@ -62,7 +62,7 @@ login1.addEventListener('click', (e) => {
       localStorage.setItem('sjhm', sjhm2.value);
       localStorage.setItem('token', result.data.data.token);
       alert("登陆成功");
-      location.href = '../首页/首页.html';
+      location.href = './首页/首页.html';
     } else {
       alert("手机号或密码错误");
     }
