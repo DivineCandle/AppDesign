@@ -22,31 +22,38 @@ confirmButton.addEventListener('click', () => {
     let token = localStorage.getItem('token');
     axios({
       url: 'http://47.113.198.244:8080/user/modifyPassword',
-      method:'PUT',
+      method: 'PUT',
       headers: {
-          token
-        },
+        token
+      },
       params: {
-        newPassword:passWordOne.value,
+        newPassword: passWordOne.value,
       }
     }).then(result => {
       console.log(result);
-       if (result.data.code==200) {
-          console.log(result.data.msg);
-
-       } else {
-          console.log(result);
-          alert(result.data.msg);
-       }
-  }) 
+      if (result.data.code == 200) {
+        console.log(result.data.msg);
+        document.getElementById("success").classList.add("show");
+        document.getElementById("overlay").classList.add("show");
+        setTimeout(() => {
+          document.getElementById("success").classList.remove("show");
+          document.getElementById("overlay").classList.remove("show");
+        }, 1500)
+        setTimeout(() => {
+          document.body.style.marginRight = "-15%";
+          document.body.style.opacity = "0";
+          setTimeout(function () {
+            location.href = '../设置页面.html';
+          }, 100);
+        }, 3000)
+      } else {
+        console.log(result);
+        alert(result.data.msg);
+      }
+    })
     console.log(11);
     //成功动画
-    document.getElementById("success").classList.add("show");
-    document.getElementById("overlay").classList.add("show");
-    setTimeout(() => {
-      document.getElementById("success").classList.remove("show");
-      document.getElementById("overlay").classList.remove("show");
-    }, 1500)
+
 
 
   } else {
