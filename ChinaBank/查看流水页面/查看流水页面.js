@@ -180,7 +180,17 @@ if(ioe){
   var getwhat=2;
   var order=0;
   var currentDate = new Date();
-  var formattedCurrentDate = currentDate.toISOString().slice(0, 19);
+
+    // 获取年、月、日、时、分、秒
+    var year = currentDate.getFullYear();
+    var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 月份从0开始，需要加1
+    var day = currentDate.getDate().toString().padStart(2, '0');
+    var hours = currentDate.getHours().toString().padStart(2, '0');
+    var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+    var seconds = currentDate.getSeconds().toString().padStart(2, '0');
+
+    // 构建表示当前时间的字符串，格式为 YYYY-MM-DDTHH:mm:ss
+    var formattedCurrentDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   axios({
     url: 'http://47.113.198.244:8080/user/getRelatedCard',
     headers: {
@@ -244,7 +254,17 @@ if(cardNumber){
   var getwhat=0;
   var order=0;
   var currentDate = new Date();
-  var formattedCurrentDate = currentDate.toISOString().slice(0, 19);
+
+    // 获取年、月、日、时、分、秒
+    var year = currentDate.getFullYear();
+    var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // 月份从0开始，需要加1
+    var day = currentDate.getDate().toString().padStart(2, '0');
+    var hours = currentDate.getHours().toString().padStart(2, '0');
+    var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+    var seconds = currentDate.getSeconds().toString().padStart(2, '0');
+
+    // 构建表示当前时间的字符串，格式为 YYYY-MM-DDTHH:mm:ss
+    var formattedCurrentDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   
   axios({
     url: 'http://47.113.198.244:8080/user/getTradeRecord',
